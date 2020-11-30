@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col, Jumbotron, Button, Alert } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
-
+import GoogleBtn from '../components/GoogleBtn';
 import HomeJumbotron from "../components/HomeJumbotron";
 
 //
@@ -25,6 +25,7 @@ export default function Home() {
         >
           Welcome to Stud-e-mon!
         </h4>
+  
       </Row>
       
       <Row style={styles.center2}>

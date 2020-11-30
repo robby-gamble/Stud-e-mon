@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { signin, signInWithGoogle} from '../components/auth';
-import LoginButton from 'Stud-e-mon/stud-e-mon/src/components/LoginButton.js';
+import Logo from '../assets/studemonlogo.png';
+
+
 
 export default class Login extends Component {
     constructor(props) {
@@ -13,6 +15,7 @@ export default class Login extends Component {
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.googleSignIn = this.googleSignIn.bind(this);
     }
 
     handleChange(event){
@@ -31,13 +34,21 @@ export default class Login extends Component {
         }
     }
 
+    async googleSignIn(){
+        try {
+            await signInWithGoogle();
+        } catch (error) {
+            this.setState({error: error.message});
+        }       
+    }
+
     render(){
         return(
             <div>
                 <form 
                 autoComplete="off"
                 onSubmit={this.handleSubmit}
-                >
+                >   <img src={Logo} alt="Logo"></img>
                     <h1>
                         Login to
                         <Link to="/">
@@ -75,6 +86,10 @@ export default class Login extends Component {
                     <p>
                         Don't have an account? <Link to="/signup">Sign Up</Link>
                     </p>
+                    <p>Or</p>
+                    <button onClick = {this.googleSignIn} type = "button">
+                        Sign Up with Google
+                    </button>
                 </form>
             </div>              
         );

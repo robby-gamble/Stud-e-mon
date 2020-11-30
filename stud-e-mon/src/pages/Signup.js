@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { signup, signInWithGoogle} from '../components/auth';
-
+import Logo from '../assets/studemonlogo.png';
 export default class SignUp extends Component {
     constructor(props){
         super(props);
@@ -32,9 +32,10 @@ export default class SignUp extends Component {
         return (
           <div>
             <form onSubmit={this.handleSubmit}>
+            <img src={Logo} alt="Logo"></img>
               <h1>
                 Sign Up to
-              <Link to="/">Chatty</Link>
+              <Link to="/">Stud-e-mon</Link>
               </h1>
               <p>Fill in the form below to create an account.</p>
               <div>
