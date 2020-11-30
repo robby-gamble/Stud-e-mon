@@ -53,7 +53,7 @@ class ModuleDropdown extends Component {
             <a href="/Home"><Card.Body>Biology</Card.Body></a>
             </Accordion.Collapse>
             <Accordion.Collapse eventKey="1">
-            <a href="/Home"><Card.Body>Physics</Card.Body></a>
+            <a href="/BattlePage"><Card.Body start={0}>Physics</Card.Body></a>
             </Accordion.Collapse>
           </Card>
           <Card>
