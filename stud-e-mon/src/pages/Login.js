@@ -81,15 +81,16 @@ export default class Login extends Component {
                             <p>{this.state.error}</p>
                         ) : null}
                         <button type="submit">Login</button>
+                        <p></p>
+                        <button onClick = {this.googleSignIn} type = "button">
+                        Sign In with Google
+                    </button>
                     </div>
                     <hr />
                     <p>
                         Don't have an account? <Link to="/signup">Sign Up</Link>
                     </p>
-                    <p>Or</p>
-                    <button onClick = {this.googleSignIn} type = "button">
-                        Sign Up with Google
-                    </button>
+                
                 </form>
             </div>              
         );

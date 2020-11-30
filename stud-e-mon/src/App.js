@@ -9,6 +9,7 @@ import Template from "./pages/Template";
 import Subject from "./pages/Subject";
 import SignIn from "./pages/Login";
 import SignUp from "./pages/Signup";
+import Battle from "./pages/tempBattlePage";
 import { auth } from "./components/Firebase/firebase"
 
 
@@ -68,6 +69,8 @@ class App extends Component {
           <PrivateRoute path = "/Subject" authenticated={this.state.authenticated} component = {Subject}></PrivateRoute>
           <PublicRoute path="/signup" authenticated={this.state.authenticated} component = {SignUp}></PublicRoute>
           <PublicRoute path="/login" authenticated={this.state.authenticated} component = {SignIn}></PublicRoute>
+          <PrivateRoute path="/Battle" authenticated={this.state.authenticated} component = {Battle}></PrivateRoute>
+          
         </Switch>
       </Router>
     );

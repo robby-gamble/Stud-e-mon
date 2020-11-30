@@ -29,13 +29,26 @@ export default function Home() {
       </Row>
       
       <Row style={styles.center2}>
-       
       </Row>
       <HomeJumbotron
         title="Single player"
         content="Start"
         link="/Subject"
         backgroundimg="grey"
+
+      />
+      <HomeJumbotron
+        title="Create Cards"
+        content="Start"
+        link="/Subject"
+        backgroundimg="grey"
+
+      />
+      <HomeJumbotron
+        title="LogOut"
+        content="SignOut With Google"
+        link="/Subject"
+        backgroundimg="yellow"
 
       />
 

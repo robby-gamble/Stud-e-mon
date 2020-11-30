@@ -12,7 +12,7 @@ export default function Module(props) {
   return  (
     <div style={{ fontFamily: "Raleway" }}>
       <BattleLogic
-        battleTopic={props.topic}  
+        battletopic={props.topic}  
       ></BattleLogic>
     </div>
   ) 

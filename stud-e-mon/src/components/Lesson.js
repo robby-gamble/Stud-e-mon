@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { Player } from 'video-react';
 import {PropTypes} from 'prop-types';
@@ -23,3 +23,4 @@ Lesson.propTypes = {
 };
 
 export default Lesson;
+*/
