@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { signin, signInWithGoogle} from '../components/auth';
+import LoginButton from 'Stud-e-mon/stud-e-mon/src/components/LoginButton.js';
 
 export default class Login extends Component {
     constructor(props) {
