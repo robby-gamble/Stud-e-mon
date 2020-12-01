@@ -1,8 +1,8 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
-import Lesson from "../components/Lesson";
+import BattleLogic from "../components/BattleLogic";
 import PropTypes from "prop-types";
-import QuizLogic from "../components/QuizLogic";
+
 import { Redirect } from "react-router-dom";
 import "../components/style.css";
 

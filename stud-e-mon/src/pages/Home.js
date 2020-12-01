@@ -44,13 +44,7 @@ export default function Home() {
         backgroundimg="grey"
 
       />
-      <HomeJumbotron
-        title="LogOut"
-        content="SignOut With Google"
-        link="/Subject"
-        backgroundimg="yellow"
-
-      />
+      <GoogleBtn />
 
     </div>
   ) 

@@ -9,7 +9,7 @@ import Template from "./pages/Template";
 import Subject from "./pages/Subject";
 import SignIn from "./pages/Login";
 import SignUp from "./pages/Signup";
-import Battle from "./pages/tempBattlePage";
+import Battle from "./pages/battlePage";
 import { auth } from "./components/Firebase/firebase"
 
 

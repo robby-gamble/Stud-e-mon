@@ -1,35 +1,37 @@
 import React, { Component } from "react";
 import { question_decks } from "./datasets/question_decks";
+import BattleGame from "../components/BattleGame";
 
-import { Player } from "video-react";
-import { user } from "./person/user";
+
 import { Row, Col, Alert, Card } from "react-bootstrap";
 
 class BattleLogic extends Component {
   state = {
-    topic:this.props.topic,
+    topic: this.props.topic,
     currentQuestiontIndex: 0, //current questions index
-    options: [], //the four options
     gameEnd: false,
     questionDeck: null,
-    rightAnswer: null, // default to m1 data
-    correct: null,
+    wrng1: null,
+    wrng2: null,
+    wrng3: null,
+    rightAnswer: null, 
+
   };
 
   loadData() {
-      if(question_decks.topic.contains)
+    const topics = question_decks.allTopics;
 
-    for(var i = 0; i < question_decks.length; i++) {
-        if (question_decks[i].TopicName == this.state.topic) { 
+
+    for(var i = 0; i < Object.keys(topics).length; i++) {
+        if (topics[i].TopicName == this.state.topic) { 
             
             this.setState(() => {
-            return { questionDeck: question_decks[i].questionsObj }; 
+            return { questionDeck: topics[i].questionsObj }; 
         } );
             break;
         }
     }
-
-    
+  
   }
 
   componentDidMount() {
@@ -46,14 +48,46 @@ class BattleLogic extends Component {
 
     this.setState(() => {
       return {
-        question: this.state.data[currentIndex].question,
-        options: this.state.data[currentIndex].options,
-        rightAnswer: this.state.data[currentIndex].answer,
-        explanation: this.state.data[currentIndex].explanation,
-        isVideo: checker,
+        question: this.state.questionDeck[currentIndex].question,
+        wrng1: this.state.questionDeck[currentIndex].wrng1,
+        wrng2: this.state.questionDeck[currentIndex].wrng2,
+        wrng3: this.state.questionDeck[currentIndex].wrng3,
+        rightAnswer: this.state.questionDeck[currentIndex].answer,
       };
     });
-  };
+  }
+
+  render() {
+    const {
+      question,
+      options,
+      currentIndex,
+      rightAnswer,
+      gameEnd,
+      wrng1,
+      wrng2,
+      wrng3,
+    } = this.state; //get the current state
+
+
+    if(!gameEnd){
+      return (
+      <div>
+        <BattleGame
+        Question = {question}
+        answer1  = {wrng1}
+        answer2  = {wrng2}
+        answer3  = {wrng3}
+        answer2  = {rightAnswer}
+        
+        />
+      </div>
+      )
+    }
+
+
+
+  }
 
 }
 

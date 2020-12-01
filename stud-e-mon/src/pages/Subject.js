@@ -8,7 +8,7 @@ export default function Training() {
     <div>
     <ModuleDropdown name="Modules" />
     <HomeJumbotron
-        title="Create Cards"
+        title="Temp Navigation to battle page"
         content="go to battle page"
         link="/Battle"
         backgroundimg="grey"/>
