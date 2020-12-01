@@ -50,9 +50,9 @@ export default class Login extends Component {
                 onSubmit={this.handleSubmit}
                 >   <img src={Logo} alt="Logo"></img>
                     <h1>
-                        Login to
+                        Login to 
                         <Link to="/">
-                            Stud-e-mon
+                               Stud-e-mon
                         </Link>
                     </h1>
                     <p>

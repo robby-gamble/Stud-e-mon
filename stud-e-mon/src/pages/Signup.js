@@ -43,8 +43,8 @@ export default class SignUp extends Component {
             <form onSubmit={this.handleSubmit}>
             <img src={Logo} alt="Logo"></img>
               <h1>
-                Sign Up to
-              <Link to="/">Stud-e-mon</Link>
+                Sign Up to 
+              <Link to="/"> Stud-e-mon</Link>
               </h1>
               <p>Fill in the form below to create an account.</p>
               <div>
