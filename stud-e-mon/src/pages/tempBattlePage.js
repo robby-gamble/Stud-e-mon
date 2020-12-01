@@ -14,21 +14,7 @@ export default function tempBattlePage() {
                 />
                 <progress id="health" value="100" max="100"></progress>
                 <div class ="player">Player Health Level</div>
-                <div class= "monster">Monster Health Level</div>
-    <div class="boxed"> Question: This a question. </div>
-                <div>
-                <button type="button" class="btn btn-primary btn-lg">
-                    <h3 style={{ textAlign: "center", color: "black"}}>
-                    {this.props.title}
-                    </h3>
-                </button>
-                <button type="button" class="btn btn-primary btn-lg">
-                    <h3 style={{ textAlign: "center", color: "black"}}>
-                    {this.props.title}
-                    </h3>
-                </button>
-                <button type="button" class="btn btn-primary btn-lg">
-                    <h3 style={{ textAlign: "center", color: "black"}}>
+                <div class ="player">Player Health Level</div>
                     {this.props.title}
                     </h3>
                 </button>

@@ -80,9 +80,9 @@ export default class Login extends Component {
                         {this.state.error ? (
                             <p>{this.state.error}</p>
                         ) : null}
-                        <button type="submit">Login</button>
+                        <button className="btn btn-primary px-5" type="submit">Login</button>
                         <p></p>
-                        <button onClick = {this.googleSignIn} type = "button">
+                        <button className="btn btn-danger mr-2" type="button" onClick = {this.googleSignIn}>
                         Sign In with Google
                     </button>
                     </div>

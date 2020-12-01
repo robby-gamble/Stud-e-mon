@@ -1,7 +1,6 @@
 //module 1 
 export const question_decks = [
-  {
-  "allTopics": [    
+
   {
         "TopicName": "algebra",
         "questionsObj": [
@@ -228,6 +227,5 @@ export const question_decks = [
     ]
   }
 
-  ]
-}
+  
 ];

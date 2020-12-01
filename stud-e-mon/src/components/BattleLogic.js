@@ -19,14 +19,16 @@ class BattleLogic extends Component {
   };
 
   loadData() {
-    const topics = question_decks.allTopics;
+    
 
 
-    for(var i = 0; i < Object.keys(topics).length; i++) {
-        if (topics[i].TopicName == this.state.topic) { 
+    for(var i = 0; i < Object.keys(question_decks).length; i++) {
+        if (question_decks[i].TopicName == this.state.topic) { 
             
             this.setState(() => {
-            return { questionDeck: topics[i].questionsObj }; 
+              console.log(this.state.questionDeck[i]);
+            return { questionDeck: question_decks[i].questionsObj }; 
+            
         } );
             break;
         }
@@ -36,15 +38,13 @@ class BattleLogic extends Component {
 
   componentDidMount() {
     this.loadData();
+    console.log('I was triggered during componentDidMount')
     this.loadGame();
   }
 
   loadGame = () => {
     const { currentIndex } = this.state; //get the current index
-    var checker = false;
-    if (currentIndex % 2 === 0 && currentIndex > 0) {
-      checker = true;
-    }
+
 
     this.setState(() => {
       return {
