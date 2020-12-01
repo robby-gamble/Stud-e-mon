@@ -1,17 +1,15 @@
 import React from "react";
 import { Row, Col, Jumbotron, Button, Alert } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
-import GoogleBtn from '../components/GoogleBtn';
+import Header from '../components/header';
 import HomeJumbotron from "../components/HomeJumbotron";
 
-//
-//testtest
 
 export default function Home() {
   return (
     
     <div style={{ fontFamily: "Raleway" }}>
-      
+      <Header></Header>
       <Row style={styles.center}>
         <h4
           style={{
@@ -44,8 +42,6 @@ export default function Home() {
         backgroundimg="grey"
 
       />
-      <GoogleBtn />
-
     </div>
   ) 
 }
