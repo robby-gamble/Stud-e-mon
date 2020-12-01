@@ -50,9 +50,9 @@ export default class Login extends Component {
                 onSubmit={this.handleSubmit}
                 >   <img src={Logo} alt="Logo"></img>
                     <h1>
-                        Login to
+                        Login to 
                         <Link to="/">
-                            Stud-e-mon
+                               Stud-e-mon
                         </Link>
                     </h1>
                     <p>
@@ -80,16 +80,17 @@ export default class Login extends Component {
                         {this.state.error ? (
                             <p>{this.state.error}</p>
                         ) : null}
-                        <button type="submit">Login</button>
+                        <button className="btn btn-primary px-5" type="submit">Login</button>
+                        <p></p>
+                        <button className="btn btn-danger mr-2" type="button" onClick = {this.googleSignIn}>
+                        Sign In with Google
+                    </button>
                     </div>
                     <hr />
                     <p>
                         Don't have an account? <Link to="/signup">Sign Up</Link>
                     </p>
-                    <p>Or</p>
-                    <button onClick = {this.googleSignIn} type = "button">
-                        Sign Up with Google
-                    </button>
+                
                 </form>
             </div>              
         );
