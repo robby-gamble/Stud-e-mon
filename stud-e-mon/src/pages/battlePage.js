@@ -7,18 +7,18 @@ import { Redirect } from "react-router-dom";
 import "../components/style.css";
 
 
-export default function Module(props) {
+export default function battlePage(props) {
 
   return  (
-    <div style={{ fontFamily: "Raleway" }}>
+
       <BattleLogic
-        battletopic={props.topic}  
-      ></BattleLogic>
-    </div>
+        battletopic={props.battletopic}  
+      />
+   
   ) 
 }
 
-Module.propTypes = {
-  filename: PropTypes.string.isRequired,
-  start: PropTypes.number.isRequired,
+battlePage.propTypes = {
+  battletopic: PropTypes.string.isRequired,
+
 };

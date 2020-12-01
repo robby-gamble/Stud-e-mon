@@ -6,61 +6,68 @@ import BattleGame from "../components/BattleGame";
 import { Row, Col, Alert, Card } from "react-bootstrap";
 
 class BattleLogic extends Component {
-  state = {
-    topic: this.props.topic,
-    currentQuestiontIndex: 0, //current questions index
-    gameEnd: false,
-    questionDeck: null,
-    wrng1: null,
-    wrng2: null,
-    wrng3: null,
-    rightAnswer: null, 
-
-  };
-
-  loadData() {
-    
+  constructor(props){
+    super(props);
+    const topicname = this.props.battletopic;
+    var testTopic = "";
+    var questions = [];
 
 
-    for(var i = 0; i < Object.keys(question_decks).length; i++) {
-        if (question_decks[i].TopicName == this.state.topic) { 
-            
-            this.setState(() => {
-              console.log(this.state.questionDeck[i]);
-            return { questionDeck: question_decks[i].questionsObj }; 
-            
-        } );
-            break;
-        }
-    }
+  for(var i = 0; i < question_decks.length; i++) {
+    testTopic = question_decks[i].TopicName;
+      if (testTopic === topicname) { 
+          
+         
+
+          questions = question_decks[i].questionsObj;
+          break;
+      }
+          
+      }
   
+
+  this.state = {
+    currentIndex: 0, //current questions index
+    gameEnd: false,
+    questionDeck: questions,
+    wrng1: questions[0].wrng1,
+    wrng2: questions[0].wrng2,
+    wrng3: questions[0].wrng3,
+    rightAnswer: questions[0].answer, 
+    question: questions[0].question,
+
+
+    };
   }
+
 
   componentDidMount() {
-    this.loadData();
     console.log('I was triggered during componentDidMount')
-    this.loadGame();
+    //loadGame();
   }
 
-  loadGame = () => {
+
+  componentDidUpdate(prevState){
     const { currentIndex } = this.state; //get the current index
+   
 
-
-    this.setState(() => {
-      return {
-        question: this.state.questionDeck[currentIndex].question,
-        wrng1: this.state.questionDeck[currentIndex].wrng1,
-        wrng2: this.state.questionDeck[currentIndex].wrng2,
-        wrng3: this.state.questionDeck[currentIndex].wrng3,
-        rightAnswer: this.state.questionDeck[currentIndex].answer,
-      };
-    });
+      if(currentIndex !== prevState.currentIndex){
+        this.setState(() => {
+          return {
+            wrng1: this.state.questionDeck[currentIndex].wrng1,
+            wrng2: this.state.questionDeck[currentIndex].wrng2,
+            wrng3: this.state.questionDeck[currentIndex].wrng3,
+            rightAnswer: this.state.questionDeck[currentIndex].answer,
+            question : this.state.questionDeck[currentIndex].question,
+          };
+    }
+  );
+}
   }
 
   render() {
     const {
       question,
-      options,
       currentIndex,
       rightAnswer,
       gameEnd,
@@ -68,9 +75,8 @@ class BattleLogic extends Component {
       wrng2,
       wrng3,
     } = this.state; //get the current state
-
-
-    if(!gameEnd){
+  
+    if(gameEnd === false){
       return (
       <div>
         <BattleGame
@@ -78,12 +84,13 @@ class BattleLogic extends Component {
         answer1  = {wrng1}
         answer2  = {wrng2}
         answer3  = {wrng3}
-        answer2  = {rightAnswer}
+        answer4  = {rightAnswer}
         
         />
       </div>
       )
     }
+  
 
 
 
