@@ -6,73 +6,63 @@ export const question_decks = [
         "questionsObj": [
             {
               "question": "x + 1 = 4",
-              "answer": "3",
-              "wrng1": "5",
-              "wrng2": "4",
-              "wrng3": "2"
+              "answer": 3,
+              "choices":[5,4,2,3,]
+
             },
             {
               "question": "-3x + 2x = 11",
-              "answer": "7",
-              "wrng1": "9",
-              "wrng2": "5",
-              "wrng3": "6"
+              "answer": 7,
+              "choices": [9,7,5,6]
             },
             {
               "question": "4x + 6 = 10",
-              "answer": "-4",
-              "wrng1": "-3",
-              "wrng2": "-5",
-              "wrng3": "4"
+              "answer": -4,
+              "choices": [-3,-5,4,-4],
             },
             {
               "question": "x + 9 = 18 - 2x",
-              "answer": "3",
-              "wrng1": "5",
-              "wrng2": "9",
-              "wrng3": "2"
+              "answer": 3,
+              "choices": [5,3,9,2]
             },
             {
               "question": "12x + 0 = 144",
-              "answer": "12",
-              "wrng1": "0",
-              "wrng2": "13",
-              "wrng3": "14"
+              "answer": 12,
+              "choices": [0,12,13,14],
+
             },
             {
               "question": "15x + 5 = 0",
-              "answer": "-3",
-              "wrng1": "3",
-              "wrng2": "5",
-              "wrng3": "5"
+              "answer": -3,
+              "choices": [-3,5,5,-1]
+
             },
             { "question" : "2x-10 = 10 - 3x",
-              "answer": "4",
-              "wrng1": "5",
-              "wrng2": "-3",
-              "wrng3": "2"
-          },
-          {
-              "question" : "-10x - 19 = 19 - 8x",
-              "answer": "-19",
-              "wrng1": "-16",
-              "wrng2": "-21",
-              "wrng3": "-17"
-          },
-          {
-              "question" : "17x - 12 = 144 + 3x",
-              "answer": "9",
-              "wrng1": "11",
-              "wrng2": "-21",
-              "wrng3": "-5"
-          },
-          {
-              "question" : "2x + 6 = 4x- 2",
-              "answer": "4",
-              "wrng1": "2",
-              "wrng2": "6",
-              "wrng3": "3"
+              "answer": 4,
+              "choices": [5,-3,2,4],
+
           }
+          // {
+          //     "question" : "-10x - 19 = 19 - 8x",
+          //     "answer": "-19",
+          //     "wrng1": "-16",
+          //     "wrng2": "-21",
+          //     "wrng3": "-17"
+          // },
+          // {
+          //     "question" : "17x - 12 = 144 + 3x",
+          //     "answer": "9",
+          //     "wrng1": "11",
+          //     "wrng2": "-21",
+          //     "wrng3": "-5"
+          // },
+          // {
+          //     "question" : "2x + 6 = 4x- 2",
+          //     "answer": "4",
+          //     "wrng1": "2",
+          //     "wrng2": "6",
+          //     "wrng3": "3"
+          // }
         ]
       },
       {

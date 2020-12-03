@@ -13,6 +13,22 @@ export default class BattleGame extends React.Component {
 
   render() {
     return (
+
+      <div>
+      <BattleGame
+      Question = {question}
+      answer1  = {wrng1}
+      answer2  = {wrng2}
+      answer3  = {wrng3}
+      answer4  = {rightAnswer}
+      
+      />
+    </div>
+
+
+
+
+
       <div>
       <div class="container">
           <img
