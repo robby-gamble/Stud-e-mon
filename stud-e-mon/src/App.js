@@ -3,14 +3,13 @@ import { BrowserRouter as Router, Switch, Route, Redirect,  } from "react-router
 import { Container } from "react-bootstrap";
 import "./fonts.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import FAQ from "./pages/FAQ";
 import Home from "./pages/Home";
 import Template from "./pages/Template";
 import Subject from "./pages/Subject";
 import SignIn from "./pages/Login";
 import SignUp from "./pages/Signup";
-import Battle from "./pages/battlePage";
 import { auth } from "./components/Firebase/firebase"
+import BattlePage from "./pages/battlePage";
 
 
 function PrivateRoute({component: Component, authenticated, ...rest}){
@@ -69,10 +68,29 @@ class App extends Component {
           <PrivateRoute path = "/Subject" authenticated={this.state.authenticated} component = {Subject}></PrivateRoute>
           <PublicRoute path="/signup" authenticated={this.state.authenticated} component = {SignUp}></PublicRoute>
           <PublicRoute path="/login" authenticated={this.state.authenticated} component = {SignIn}></PublicRoute>
-          <PrivateRoute path="/Battle" authenticated={this.state.authenticated} component = {Battle}></PrivateRoute>
-          
+
+        
+        <Route 
+          path="/Battle/algebra"
+          render = {(props) => <BattlePage {...props} battletopic={"algebra"}/>}
+          />
+        <Route path="/Battle/arithmetic"
+          render = {(props) => <BattlePage
+          {...props}
+          battletopic="arithmetic"
+          />}
+        />
+        <Route path="/Battle/precalc"
+          render = {(props) => <BattlePage
+          {...props}
+          battletopic= {"precalc"}
+          />}
+        />
         </Switch>
+
       </Router>
+
+      
     );
   }
   

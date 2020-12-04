@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Accordion, Card, Button } from "react-bootstrap";
+import { Route } from "react-router-dom";
+import { Switch } from "react-router-dom";
+import {battlePage} from "../pages/battlePage.js";
 
 
 class ModuleDropdown extends Component {
@@ -9,7 +12,12 @@ class ModuleDropdown extends Component {
 
   render() {
     return (
+
+
       <div>
+        
+
+
         <div>
           <h1
             style={{ display: "flex", justifyContent: "center", marginTop: 15 }}
@@ -32,13 +40,13 @@ class ModuleDropdown extends Component {
                   Math
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="0">
-              <a href="/Home"><Card.Body>Algebra</Card.Body></a>
+              <a href="/Battle/algebra"><Card.Body>Algebra</Card.Body></a>
               </Accordion.Collapse>
               <Accordion.Collapse eventKey="0">
-              <a href="/Home"><Card.Body>Geometry</Card.Body></a>
+              <a href="/Battle/arithmetic"><Card.Body>arithmetic</Card.Body></a>
               </Accordion.Collapse>
               <Accordion.Collapse eventKey="0">
-              <a href="/Home"><Card.Body>Calculus</Card.Body></a>
+              <a href="/Battle/precalc"><Card.Body>Calculus</Card.Body></a>
               </Accordion.Collapse>
           </Card>
 
