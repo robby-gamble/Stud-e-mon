@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { question_decks } from "./datasets/question_decks";
-
+import ProgressBar from "../components/progressbar";
 import battleImage from '../assets/battlesequence.png';
 
 import { Row, Col, Alert, Card } from "react-bootstrap";
@@ -11,6 +11,7 @@ class BattleLogic extends Component {
     const topicname = this.props.battletopic;
     var testTopic = "";
     var questions = [];
+    
 
 
   for(var i = 0; i < question_decks.length; i++) {
@@ -24,6 +25,12 @@ class BattleLogic extends Component {
       }
           
       }
+
+    
+  var attDMgP = (100/question_decks.length)*2;
+  var attDMgM = (100/(question_decks.length/4));
+
+
   
 
   this.state = {
@@ -33,6 +40,10 @@ class BattleLogic extends Component {
     choices: this.shuffle(questions[0].choices),
     rightAnswer: questions[0].answer, 
     question: questions[0].question,
+    playerHealth: 100,
+    monsterHealth: 100,
+    playerAttDmg: attDMgP,
+    monsterAttDmg: attDMgM
 
 
     };
@@ -78,21 +89,65 @@ class BattleLogic extends Component {
   }
 }
   hurtEnemy(){
+    const { monsterHealth } = this.state;
+    const { playerAttDmg } = this.state;
+
+    var newMonsterH = monsterHealth - playerAttDmg;
+
+    this.setState(() => {
+      return {
+        monsterHealth : newMonsterH,
+      };
+    })
+
+
+  }
+  
+  hurtPlayerRight(){
+    const { playerHealth } = this.state;
+
+    var newPlayerH = playerHealth - 10;
+
+    this.setState(() => {
+      return {
+        playerHealth : newPlayerH,
+      };
+    })
+
+
+  }
+
+  hurtPlayerWrong(){
+    const { playerHealth } = this.state;
+    const { monsterAttDmg } = this.state;
+
+    var newPlayerH = playerHealth - monsterAttDmg;
+
+    this.setState(() => {
+      return {
+        monsterHealth : newPlayerH,
+      };
+    })
 
   }
 
   handleClick(response){
-
+    
     if (this.state.rightAnswer === response){
+      this.hurtEnemy();
+      this.hurtPlayerRight();
+      
       this.setState(() => {
         return {
           currentIndex : this.state.currentIndex + 1,
         };
       })
-      //hurtEnemy();
+
 
     }
     else {
+      this.hurtPlayerWrong();
+       
       this.setState(() => {
         return {
           currentIndex : this.state.currentIndex + 1,
@@ -108,6 +163,8 @@ class BattleLogic extends Component {
       currentIndex,
       gameEnd,
       choices,
+      playerHealth,
+      monsterHealth
     } = this.state; //get the current state
   
     if(gameEnd === false){
@@ -119,29 +176,37 @@ class BattleLogic extends Component {
               alt="Battle Sequence"
               width="1110"
           />
-          <div class ="player">Player Health Level</div>
-          <div class= "monster">Monster Health Level</div>
+          <div class ="player">Player Health Level <ProgressBar newHealth={playerHealth} /></div>
+          
+          <div class= "monster">Monster Health Level <ProgressBar newHealth ={monsterHealth}/> </div>
+          
+
+          
           <div class="boxed">
             <h3 style={{ textAlign: "center", color: "black"}}>
             {question}
             </h3>
           </div>
           <div>
-          <button onClick={(event) => this.handleClick(choices[0])} type="button" class="btn btn-primary btn-lg">
+          <button onClick={(event) => this.handleClick(choices[0])} type="button" class="btn btn-primary btn-lg" >
               <h3 style={{ textAlign: "center", color: "black"}}>
               {choices[0]}
               </h3>
           </button>
+          
           <button onClick={(event) => this.handleClick(choices[0])} type="button" class="btn btn-primary btn-lg">
               <h3 style={{ textAlign: "center", color: "black"}}>
               {choices[1]}
               </h3>
           </button>
+          
           <button onClick={(event) => this.handleClick(choices[0])} type="button" class="btn btn-primary btn-lg">
               <h3 style={{ textAlign: "center", color: "black"}}>
               {choices[2]}
               </h3>
           </button>
+          
+
           <button onClick={(event) => this.handleClick(choices[0])} type="button" class="btn btn-primary btn-lg">
               <h3 style={{ textAlign: "center", color: "black"}}>
               {choices[3]}

@@ -35,13 +35,7 @@ export default function Home() {
         backgroundimg="grey"
 
       />
-      <HomeJumbotron
-        title="Create Cards"
-        content="Start"
-        link="/Subject"
-        backgroundimg="grey"
 
-      />
     </div>
   ) 
 }
