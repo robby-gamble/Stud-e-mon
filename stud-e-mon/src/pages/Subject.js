@@ -11,11 +11,6 @@ export default function Training() {
     
     <ModuleDropdown name="Modules" />
     
-    <HomeJumbotron
-        title="Temp Navigation to battle page"
-        content="go to battle page"
-        link="/Battle"
-        backgroundimg="grey"/>
-      </div>
+    </div>
   ) 
 }

@@ -43,7 +43,7 @@ class ModuleDropdown extends Component {
               <a href="/Battle/algebra"><Card.Body>Algebra</Card.Body></a>
               </Accordion.Collapse>
               <Accordion.Collapse eventKey="0">
-              <a href="/Battle/arithmetic"><Card.Body>arithmetic</Card.Body></a>
+              <a href="/Battle/arithmetic"><Card.Body>Arithmetic</Card.Body></a>
               </Accordion.Collapse>
               <Accordion.Collapse eventKey="0">
               <a href="/Battle/precalc"><Card.Body>Calculus</Card.Body></a>
