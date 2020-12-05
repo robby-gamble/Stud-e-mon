@@ -28,7 +28,12 @@ class BattleLogic extends Component {
 
     
   var attDMgP = (100/question_decks.length)*2;
-  var attDMgM = (100/(question_decks.length/4));
+  var temp1 = ((question_decks.length));
+  var temp = ((temp1*.25));
+  if (temp < 1){
+    temp = 1;
+  }
+  var attDMgM = 100/temp;
 
 
   
@@ -132,27 +137,36 @@ class BattleLogic extends Component {
   }
 
   handleClick(response){
-    
+
+    const { playerHealth } = this.state;
+    const { monsterAttDmg } = this.state;
+    const { monsterHealth } = this.state;
+    const { playerAttDmg } = this.state;
+    //hurt player right hurt enemy
     if (this.state.rightAnswer === response){
-      this.hurtEnemy();
-      this.hurtPlayerRight();
+      var newMonsterH = monsterHealth - playerAttDmg;
+      var newPlayerH = playerHealth - 10;
       
       this.setState(() => {
         return {
           currentIndex : this.state.currentIndex + 1,
+          playerHealth : newPlayerH,
+          monsterHealth : newMonsterH,
         };
       })
 
 
     }
     else {
-      this.hurtPlayerWrong();
+    var newPlayerH = playerHealth - monsterAttDmg;
+
+    this.setState(() => {
+      return {
+        currentIndex : this.state.currentIndex + 1,
+        monsterHealth : newPlayerH,
+      };
+    })
        
-      this.setState(() => {
-        return {
-          currentIndex : this.state.currentIndex + 1,
-        };
-      })
     } 
 
   }
@@ -160,7 +174,6 @@ class BattleLogic extends Component {
   render() {
     const {
       question,
-      currentIndex,
       gameEnd,
       choices,
       playerHealth,

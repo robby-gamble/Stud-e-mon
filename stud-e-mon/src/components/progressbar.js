@@ -7,11 +7,16 @@ export default class ProgressBar extends React.Component {
       super(props);
       var newHealth = String(this.props.newHealth) +"%"
           
- 
+        
       this.state = {
         health: newHealth,
       }
     }
+
+    healthlevel() {
+        var newHealth = String(this.props.newHealth) +"%"
+         return newHealth;
+      }
  
     
     render() {
@@ -19,7 +24,7 @@ export default class ProgressBar extends React.Component {
         <div class="progress">
         <div class="progress-bar progress-bar-danger" role="progressbar"
          style={{
-          width: this.state.health }}
+          width: 100 }}
           aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
       );
