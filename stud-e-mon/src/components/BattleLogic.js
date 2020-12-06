@@ -27,8 +27,10 @@ class BattleLogic extends Component {
       }
 
     
-  var attDMgP = (100/question_decks.length)*2;
+  var attDMgP = (100/(question_decks.length))*2;
+
   var temp1 = ((question_decks.length));
+  
   var temp = ((temp1*.25));
   if (temp < 1){
     temp = 1;
@@ -40,7 +42,7 @@ class BattleLogic extends Component {
 
   this.state = {
     currentIndex: 0, //current questions index
-    gameEnd: false,
+    gameEnd: true,
     questionDeck: questions,
     choices: this.shuffle(questions[0].choices),
     rightAnswer: questions[0].answer, 
@@ -93,48 +95,16 @@ class BattleLogic extends Component {
     );
   }
 }
-  hurtEnemy(){
-    const { monsterHealth } = this.state;
-    const { playerAttDmg } = this.state;
 
-    var newMonsterH = monsterHealth - playerAttDmg;
-
+  gameOver(){
     this.setState(() => {
-      return {
-        monsterHealth : newMonsterH,
+      return{
+        gameEnd : true
       };
-    })
-
-
-  }
-  
-  hurtPlayerRight(){
-    const { playerHealth } = this.state;
-
-    var newPlayerH = playerHealth - 10;
-
-    this.setState(() => {
-      return {
-        playerHealth : newPlayerH,
-      };
-    })
-
+    });
 
   }
 
-  hurtPlayerWrong(){
-    const { playerHealth } = this.state;
-    const { monsterAttDmg } = this.state;
-
-    var newPlayerH = playerHealth - monsterAttDmg;
-
-    this.setState(() => {
-      return {
-        monsterHealth : newPlayerH,
-      };
-    })
-
-  }
 
   handleClick(response){
 
@@ -142,10 +112,16 @@ class BattleLogic extends Component {
     const { monsterAttDmg } = this.state;
     const { monsterHealth } = this.state;
     const { playerAttDmg } = this.state;
+    var answer = this.state.rightAnswer;
     //hurt player right hurt enemy
-    if (this.state.rightAnswer === response){
+    if (answer === response){
       var newMonsterH = monsterHealth - playerAttDmg;
       var newPlayerH = playerHealth - 10;
+
+      if (newMonsterH < 0){
+
+        newMonsterH = 0;
+      }
       
       this.setState(() => {
         return {
@@ -159,11 +135,13 @@ class BattleLogic extends Component {
     }
     else {
     var newPlayerH = playerHealth - monsterAttDmg;
-
+    if( newPlayerH < 0){
+        this.gameOver();
+    }
     this.setState(() => {
       return {
         currentIndex : this.state.currentIndex + 1,
-        monsterHealth : newPlayerH,
+        playerHealth : newPlayerH,
       };
     })
        
@@ -179,8 +157,84 @@ class BattleLogic extends Component {
       playerHealth,
       monsterHealth
     } = this.state; //get the current state
-  
-    if(gameEnd === false){
+    
+    if(gameEnd===true){
+      
+      return(
+      <div>
+      <div class="container">
+        
+      <div class="modal" show="true" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Game Over</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Game Over</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+          <img
+              src={battleImage}
+              alt="Battle Sequence"
+              width="1110"
+          />
+          <div class ="player">Player Health Level <ProgressBar newHealth={playerHealth} /></div>
+          Player Health: {playerHealth}
+          <br></br>
+          <div class= "monster">Monster Health Level <ProgressBar newHealth ={monsterHealth}/> </div>
+          Monster Health: {monsterHealth}
+          <br></br>
+          
+          <div class="boxed">
+          
+            <h3 style={{ textAlign: "center", color: "black"}}>
+            Question: {question}
+            </h3>
+            
+            <br></br>
+          </div>
+          <div>
+          <button  type="button" disabled class="btn btn-primary btn-lg btn-block" >
+              <h3 style={{ textAlign: "center", color: "black"}}>
+              {choices[0]}
+              </h3>
+          </button>
+          
+          <button  type="button" disabled class="btn btn-primary btn-lg btn-block">
+              <h3 style={{ textAlign: "center", color: "black"}}>
+              {choices[1]}
+              </h3>
+          </button>
+          
+          <button  type="button" disabled class="btn btn-primary btn-lg btn-block">
+              <h3 style={{ textAlign: "center", color: "black"}}>
+              {choices[2]}
+              </h3>
+          </button>
+          
+
+          <button  type="button" disabled class="btn btn-primary btn-lg btn-block">
+              <h3 style={{ textAlign: "center", color: "black"}}>
+              {choices[3]}
+              </h3>
+          </button>
+              
+          </div>
+      </div>
+      </div>
+      )
+    } else {
       return (
     <div>
       <div class="container">
@@ -190,37 +244,40 @@ class BattleLogic extends Component {
               width="1110"
           />
           <div class ="player">Player Health Level <ProgressBar newHealth={playerHealth} /></div>
-          
+          Player Health: {playerHealth}
           <div class= "monster">Monster Health Level <ProgressBar newHealth ={monsterHealth}/> </div>
-          
-
+          Monster Health: {monsterHealth}
+          <br></br>
           
           <div class="boxed">
+          
             <h3 style={{ textAlign: "center", color: "black"}}>
-            {question}
+            Question: {question}
             </h3>
+            
+            <br></br>
           </div>
           <div>
-          <button onClick={(event) => this.handleClick(choices[0])} type="button" class="btn btn-primary btn-lg" >
+          <button onClick={(event) => this.handleClick(choices[0])} type="button"  class="btn btn-primary btn-lg btn-block" >
               <h3 style={{ textAlign: "center", color: "black"}}>
               {choices[0]}
               </h3>
           </button>
           
-          <button onClick={(event) => this.handleClick(choices[0])} type="button" class="btn btn-primary btn-lg">
+          <button onClick={(event) => this.handleClick(choices[1])} type="button"  class="btn btn-primary btn-lg btn-block">
               <h3 style={{ textAlign: "center", color: "black"}}>
               {choices[1]}
               </h3>
           </button>
           
-          <button onClick={(event) => this.handleClick(choices[0])} type="button" class="btn btn-primary btn-lg">
+          <button onClick={(event) => this.handleClick(choices[2])} type="button"  class="btn btn-primary btn-lg btn-block">
               <h3 style={{ textAlign: "center", color: "black"}}>
               {choices[2]}
               </h3>
           </button>
           
 
-          <button onClick={(event) => this.handleClick(choices[0])} type="button" class="btn btn-primary btn-lg">
+          <button onClick={(event) => this.handleClick(choices[3])} type="button"  class="btn btn-primary btn-lg btn-block">
               <h3 style={{ textAlign: "center", color: "black"}}>
               {choices[3]}
               </h3>
@@ -229,7 +286,7 @@ class BattleLogic extends Component {
           </div>
       </div>
     </div>
-    
+
       )
     }
   

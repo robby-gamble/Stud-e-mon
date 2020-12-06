@@ -55,11 +55,11 @@ export default class SignUp extends Component {
               </div>
               <div>
                 {this.state.error ? <p>{this.state.error}</p> : null}
-                <button type="submit">Sign up</button>
+                <button class = "btn btn-primary px-5" type="submit">Sign up</button>
               </div>
               <p></p>
               <p>Or</p>
-              <button onClick = {this.googleSignIn} type = "button">
+              <button onClick = {this.googleSignIn} class = "btn btn-danger mr-2" type = "button">
                         Sign Up with Google
                     </button>
               <hr></hr>

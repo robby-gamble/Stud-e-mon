@@ -11,12 +11,12 @@ export const question_decks = [
 
             },
             {
-              "question": "-3x + 2x = 11",
+              "question": "-3x + 2x = -7",
               "answer": 7,
               "choices": [9,7,5,6]
             },
             {
-              "question": "4x + 6 = 10",
+              "question": "4x + 6 = -10",
               "answer": -4,
               "choices": [-3,-5,4,-4],
             },
@@ -32,7 +32,7 @@ export const question_decks = [
 
             },
             {
-              "question": "15x + 5 = 0",
+              "question": "15 + 5x = 0",
               "answer": -3,
               "choices": [-3,5,5,-1]
 
@@ -45,12 +45,12 @@ export const question_decks = [
            {
               "question" : "-10x - 19 = 19 - 8x",
               "answer": "-19",
-              "choices":[-16,-21,-17]
+              "choices":[-16,-21,-17,-11]
           },
           {
-              "question" : "17x - 12 = 144 + 3x",
-              "answer": "9",
-              "choices": [9,19,-21,-5]
+              "question" : "17x = 144 + 5x",
+              "answer": "12",
+              "choices": [12,19,-21,-5]
           },
           {
               "question" : "2x + 6 = 4x- 2",

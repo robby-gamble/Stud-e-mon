@@ -24,10 +24,9 @@ export default class ProgressBar extends React.Component {
         <div class="progress">
         <div class="progress-bar progress-bar-danger" role="progressbar"
          style={{
-          width: 100 }}
+          width: this.healthlevel() }}
           aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
       );
     }
-  }
-  
+  } 
