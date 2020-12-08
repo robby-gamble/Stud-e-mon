@@ -3,7 +3,9 @@ import { question_decks } from "./datasets/question_decks";
 import ProgressBar from "../components/progressbar";
 import battleImage from '../assets/battlesequence.png';
 
-import { Row, Col, Alert, Card } from "react-bootstrap";
+import $ from 'jquery'; 
+
+import { Row, Col, Alert, Card, Modal, Button } from "react-bootstrap";
 
 class BattleLogic extends Component {
   constructor(props){
@@ -42,7 +44,7 @@ class BattleLogic extends Component {
 
   this.state = {
     currentIndex: 0, //current questions index
-    gameEnd: true,
+    gameEnd: false,
     questionDeck: questions,
     choices: this.shuffle(questions[0].choices),
     rightAnswer: questions[0].answer, 
@@ -50,7 +52,8 @@ class BattleLogic extends Component {
     playerHealth: 100,
     monsterHealth: 100,
     playerAttDmg: attDMgP,
-    monsterAttDmg: attDMgM
+    monsterAttDmg: attDMgM,
+    showModal: true
 
 
     };
@@ -70,7 +73,8 @@ class BattleLogic extends Component {
   }
 
   componentDidMount(prevState, prevProps) {
-    console.log('I was triggered during componentDidMount')
+    console.log('I was triggered during componentDidMount');
+
 
    
   }
@@ -78,12 +82,14 @@ class BattleLogic extends Component {
 
   componentDidUpdate(prevState, prevProps){
     const { currentIndex } = this.state; //get the current index
+
+    
   
     if (currentIndex === this.state.questionDeck.length-1 ){
       return;
     }
 
-      if(this.state.currentIndex != prevProps.currentIndex){
+      if(this.state.currentIndex !== prevProps.currentIndex){
         this.setState(() => {
           return {
             
@@ -118,7 +124,7 @@ class BattleLogic extends Component {
       var newMonsterH = monsterHealth - playerAttDmg;
       var newPlayerH = playerHealth - 10;
 
-      if (newMonsterH < 0){
+      if (newMonsterH <= 0){
 
         newMonsterH = 0;
       }
@@ -135,7 +141,7 @@ class BattleLogic extends Component {
     }
     else {
     var newPlayerH = playerHealth - monsterAttDmg;
-    if( newPlayerH < 0){
+    if( newPlayerH <= 0){
         this.gameOver();
     }
     this.setState(() => {
@@ -149,13 +155,24 @@ class BattleLogic extends Component {
 
   }
 
+  handleclose(){
+    this.setState(() => {
+      return{
+        showModal : false
+      };
+    });
+
+  }
+
+
   render() {
     const {
       question,
       gameEnd,
       choices,
       playerHealth,
-      monsterHealth
+      monsterHealth,
+      showModal
     } = this.state; //get the current state
     
     if(gameEnd===true){
@@ -164,24 +181,17 @@ class BattleLogic extends Component {
       <div>
       <div class="container">
         
-      <div class="modal" show="tru" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Game Over</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>Game Over</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
+      <Modal show={showModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Game Over</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>The game is over!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" href="/Subject">
+            Select Topic
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
       </div>
           <img
@@ -190,10 +200,8 @@ class BattleLogic extends Component {
               width="1110"
           />
           <div class ="player">Player Health Level <ProgressBar newHealth={playerHealth} /></div>
-          Player Health: {playerHealth}
           <br></br>
           <div class= "monster">Monster Health Level <ProgressBar newHealth ={monsterHealth}/> </div>
-          Monster Health: {monsterHealth}
           <br></br>
           
           <div class="boxed">
@@ -232,7 +240,7 @@ class BattleLogic extends Component {
               
           </div>
       </div>
-      </div>
+      
       )
     } else {
       return (
@@ -244,9 +252,7 @@ class BattleLogic extends Component {
               width="1110"
           />
           <div class ="player">Player Health Level <ProgressBar newHealth={playerHealth} /></div>
-          Player Health: {playerHealth}
           <div class= "monster">Monster Health Level <ProgressBar newHealth ={monsterHealth}/> </div>
-          Monster Health: {monsterHealth}
           <br></br>
           
           <div class="boxed">
