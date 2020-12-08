@@ -164,7 +164,7 @@ class BattleLogic extends Component {
       <div>
       <div class="container">
         
-      <div class="modal" show="true" tabindex="-1">
+      <div class="modal" show="tru" tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
