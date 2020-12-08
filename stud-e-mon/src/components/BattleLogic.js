@@ -127,6 +127,7 @@ class BattleLogic extends Component {
       if (newMonsterH <= 0){
 
         newMonsterH = 0;
+        this.gameOver();
       }
       
       this.setState(() => {
